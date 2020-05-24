@@ -51,7 +51,8 @@ public class Main {
 		String JAVA_HOME = System.getProperty("java.home");
 		String rt_jar = JAVA_HOME+"/lib/rt.jar";
 		String jce_jar = JAVA_HOME+"/lib/jce.jar";
-		String sootClassPath = "sootInput"+File.pathSeparator+rt_jar+File.pathSeparator+jce_jar;
+		String sootClassPath = "sootInput"+File.pathSeparator+
+				rt_jar+File.pathSeparator+jce_jar;
 		Scene.v().setSootClassPath(sootClassPath);
 		Options.v().set_prepend_classpath(true);
 		Options.v().set_allow_phantom_refs(true);
@@ -111,7 +112,7 @@ public class Main {
 		        	file.createNewFile();
 		        }
 		        String [] command = new String [] {
-						"./run.sh",
+						"./link.sh",
 						mainPath
 				};
 				ProcessBuilder processBuilder = new ProcessBuilder();
@@ -194,8 +195,8 @@ public class Main {
 			"DynamicMonitor"
 		};
 		
-		String classPath = "benchmark/test1";
-		String mainPath = "Main";
+		String classPath = args[0];
+		String mainPath = args[1];
 		
 		boolean mainExist = false;
 		List<String> otherPaths = new ArrayList<> ();
